@@ -3,204 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>videyjav</title>
-
-<style>
-body {
-  margin:0;
-  background:#fff;
-  color:#000;
-  font-family:Arial;
-}
-
-.header {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:12px 16px;
-  border-bottom:1px solid #eee;
-}
-
-.logo {
-  font-size:22px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.upload {
-  background:#0d1b2a;
-  color:#fff;
-  padding:8px 16px;
-  border-radius:25px;
-  font-size:14px;
-}
-
-.container {
-  padding:10px;
-}
-
-.main-video {
-  position:relative;
-}
-
-.main-video video {
-  width:100%;
-  border-radius:15px;
-  background:#000;
-}
-
-.overlay {
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  font-size:60px;
-  color:white;
-  background:rgba(0,0,0,0.5);
-  width:80px;
-  height:80px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  cursor:pointer;
-}
-
-.main-title {
-  font-size:16px;
-  font-weight:bold;
-  margin:10px 0;
-}
-
-.meta {
-  font-size:13px;
-  color:#555;
-  margin-bottom:10px;
-}
-
-.grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-
-.item {
-  cursor:pointer;
-}
-
-.item video {
-  width:100%;
-  border-radius:10px;
-}
-
-.item-title {
-  font-size:13px;
-  margin-top:5px;
-}
-</style>
+<title>Stream Upload System</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- POPUNDER BARU -->
-<script>
-(function(s){
-  s.dataset.zone='10911549',
-  s.src='https://al5sm.com/tag.min.js'
-})
-([document.documentElement, document.body]
-.filter(Boolean)
-.pop()
-.appendChild(document.createElement('script')));
-</script>
+<header>STREAM UPLOAD</header>
 
-<div class="header">
-  <div class="logo" onclick="location.reload()">videypro</div>
-  <div class="upload">Upload</div>
-</div>
+<!-- UPLOAD FORM -->
+<div class="upload-box">
 
-<div class="container">
+<input id="title" placeholder="Judul video">
+<input id="url" placeholder="Link video MP4">
 
-  <div class="main-video" onclick="playVideo()">
-    <video id="mainPlayer"></video>
-    <div class="overlay" id="overlay">▶</div>
-  </div>
-
-  <div class="main-title" id="mainTitle"></div>
-
-  <div class="meta">
-    👁 1.2M views • ❤️ 25K likes
-  </div>
-
-  <div class="grid" id="videoList"></div>
+<button onclick="uploadVideo()">Upload Video</button>
 
 </div>
 
+<!-- LIST -->
+<div id="list" class="grid"></div>
+
 <script>
-let videos = [];
-let clicked = false;
 
-function playVideo(){
-  let video = document.getElementById("mainPlayer");
+let videos = JSON.parse(localStorage.getItem("videos")) || [];
 
-  video.play();
-  document.getElementById("overlay").style.display = "none";
+/* UPLOAD FUNCTION */
+function uploadVideo(){
 
-  if(!clicked){
-    clicked = true;
-    // DIRECT LINK BARU
-    window.open("https://omg10.com/4/10911562", "_blank");
-  }
+let title = document.getElementById("title").value;
+let url = document.getElementById("url").value;
+
+if(!title || !url){
+alert("Isi semua data");
+return;
 }
 
-function shuffle(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
+videos.push({title,url});
+localStorage.setItem("videos",JSON.stringify(videos));
+
+render();
+
+document.getElementById("title").value="";
+document.getElementById("url").value="";
 }
 
-fetch('videos.json')
-.then(res => res.json())
-.then(data => {
+/* RENDER LIST */
+function render(){
 
-  videos = shuffle(data);
+let list = document.getElementById("list");
+list.innerHTML="";
 
-  loadVideo(0);
+videos.forEach((v,i)=>{
 
-  let html = "";
-  videos.forEach((vid, i) => {
-    if(i !== 0){
-      html += `
-        <div class="item" onclick="loadVideo(${i})">
-          <video src="${vid.file}"></video>
-          <div class="item-title">${vid.title}</div>
-        </div>
-      `;
-    }
-  });
+let card = document.createElement("div");
+card.className="card";
 
-  document.getElementById("videoList").innerHTML = html;
+/* thumbnail dari video */
+let video = document.createElement("video");
+video.src = v.url;
+video.muted = true;
+video.currentTime = 1;
+video.addEventListener("loadeddata",()=>{});
+
+card.innerHTML=`
+<div class="title">${v.title}</div>
+`;
+
+card.onclick=()=>{
+localStorage.setItem("play",JSON.stringify(v));
+window.location.href="watch.html";
+};
+
+card.prepend(video);
+list.appendChild(card);
+
 });
 
-function loadVideo(i){
-  let video = document.getElementById("mainPlayer");
-
-  video.pause();
-  video.currentTime = 0;
-
-  video.src = videos[i].file;
-  document.getElementById("mainTitle").innerText = videos[i].title;
-
-  document.getElementById("overlay").style.display = "flex";
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
 }
+
+render();
+
 </script>
 
 </body>
-  </html>
+</html>
