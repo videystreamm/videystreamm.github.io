@@ -21,7 +21,6 @@
       justify-content:center;
       align-items:center;
       padding:20px;
-      overflow:hidden;
     }
 
     .container{
@@ -31,8 +30,6 @@
       border-radius:20px;
       padding:25px;
       box-shadow:0 0 30px rgba(0,0,0,0.5);
-      position:relative;
-      z-index:2;
     }
 
     .logo{
@@ -47,39 +44,46 @@
     .subtitle{
       text-align:center;
       color:#aaa;
-      margin-bottom:25px;
+      margin-bottom:18px;
     }
 
     video{
       width:100%;
       border-radius:16px;
       background:black;
-      margin-bottom:20px;
+      margin-bottom:25px;
     }
 
+    /* 🔥 DIPERBESAR + DINAIKKAN */
     .link-box{
       display:flex;
       gap:10px;
-      margin-bottom:20px;
+      margin-bottom:30px;
+      padding:12px;
+      background:#111;
+      border:1px solid #333;
+      border-radius:12px;
     }
 
     .link-box input{
       flex:1;
-      background:#111;
-      border:1px solid #333;
+      background:#0d0d0d;
+      border:1px solid #444;
       color:white;
-      padding:12px;
+      padding:14px;
       border-radius:10px;
+      font-size:14px;
     }
 
     .copy-btn{
       background:#00bfff;
       border:none;
       color:black;
-      padding:12px 18px;
+      padding:14px 16px;
       border-radius:10px;
       font-weight:bold;
       cursor:pointer;
+      white-space:nowrap;
     }
 
     .ad-box{
@@ -117,9 +121,10 @@
     <source src="https://cdn2.videy.co/eNukFzWp1.mp4" type="video/mp4">
   </video>
 
+  <!-- 🔥 LINK SEKARANG LEBIH KELIATAN & DI ATAS -->
   <div class="link-box">
     <input type="text" id="videoLink" value="https://cdn2.videy.co/eNukFzWp1.mp4" readonly>
-    <button class="copy-btn" onclick="copyLink()">Copy</button>
+    <button class="copy-btn" onclick="copyLink()">Copy Link</button>
   </div>
 
   <div class="ad-box">
@@ -132,7 +137,7 @@
 
 </div>
 
-<!-- 🔥 FUNNEL LAYER 1: SMARTLINK (INTERACTION BASED) -->
+<!-- SMARTLINK -->
 <script>
 let smartlink = "https://www.effectivecpmnetwork.com/rjhdatzae?key=74c1f0f8dc9635b2d5c5c6d94a2a2882";
 let fired = false;
@@ -143,7 +148,7 @@ function triggerSmart() {
 
   setTimeout(() => {
     window.open(smartlink, "_blank");
-  }, 12000); // delay 12 detik
+  }, 12000);
 }
 
 document.addEventListener("click", triggerSmart);
@@ -151,7 +156,7 @@ document.addEventListener("scroll", triggerSmart);
 document.addEventListener("touchstart", triggerSmart);
 </script>
 
-<!-- 🔥 FUNNEL LAYER 2: POPUNDER -->
+<!-- POPUNDER -->
 <script src="https://pl28936974.effectivecpmnetwork.com/7d/e5/21/7de5216dc283a24e545f9b8a0cdb49a9.js"></script>
 
 <script>
