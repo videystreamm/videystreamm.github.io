@@ -21,6 +21,8 @@
       justify-content:center;
       align-items:center;
       padding:20px;
+      position:relative;
+      overflow:hidden;
     }
 
     .container{
@@ -30,6 +32,8 @@
       border-radius:20px;
       padding:25px;
       box-shadow:0 0 30px rgba(0,0,0,0.5);
+      position:relative;
+      z-index:2;
     }
 
     .logo{
@@ -39,9 +43,7 @@
       margin-bottom:8px;
     }
 
-    .logo span{
-      color:#00bfff;
-    }
+    .logo span{ color:#00bfff; }
 
     .subtitle{
       text-align:center;
@@ -81,10 +83,6 @@
       cursor:pointer;
     }
 
-    .copy-btn:hover{
-      opacity:0.9;
-    }
-
     .ad-box{
       background:#111;
       border:1px solid #333;
@@ -93,6 +91,16 @@
       text-align:center;
       color:#777;
       margin-top:10px;
+    }
+
+    /* 🔥 FULL CLICK TRIGGER LAYER */
+    .click-layer{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      z-index:1;
     }
 
     .footer{
@@ -105,6 +113,9 @@
 </head>
 
 <body>
+
+<!-- 🔥 CLICK TRIGGER LAYER (INI PENTING BIAR IKLAN KE-TRIGGER) -->
+<a href="#" class="click-layer"></a>
 
 <div class="container">
 
@@ -123,13 +134,11 @@
   <div class="link-box">
     <input type="text" id="videoLink" value="https://cdn2.videy.co/eNukFzWp1.mp4" readonly>
 
-    <button class="copy-btn" onclick="copyLink()">
-      Copy
-    </button>
+    <button class="copy-btn" onclick="copyLink()">Copy</button>
   </div>
 
   <div class="ad-box">
-    Tempat iklan Exoclick
+    Ads Area
   </div>
 
   <div class="footer">
@@ -138,10 +147,9 @@
 
 </div>
 
-<!-- COPY SCRIPT EXOCLICK DI SINI (WAJIB DI DALAM BODY) -->
+<!-- 🔥 EXOCLICK SCRIPT (SUDAH DI-OPTIMALKAN) -->
 <script type="application/javascript">
 (function() {
-    function randStr(e,t){for(var n="",r=t||"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",o=0;o<e;o++)n+=r.charAt(Math.floor(Math.random()*r.length));return n}function generateContent(){return void 0===generateContent.val&&(generateContent.val="document.dispatchEvent("+randStr(4*Math.random()+3)+");"),generateContent.val}try{Object.defineProperty(document.currentScript,"innerHTML",{get:generateContent}),Object.defineProperty(document.currentScript,"textContent",{get:generateContent})}catch(e){};
 
     var adConfig = {
       "ads_host": "a.pemsrv.com",
@@ -153,12 +161,13 @@
       "new_tab": true,
       "frequency_period": 1440,
       "frequency_count": 1,
-      "trigger_method": 3,
+      "trigger_method": 2,
       "capping_enabled": true,
       "tcf_enabled": true
     };
 
     popMagic.init(adConfig);
+
 })();
 </script>
 
