@@ -21,7 +21,6 @@
       justify-content:center;
       align-items:center;
       padding:20px;
-      position:relative;
       overflow:hidden;
     }
 
@@ -93,16 +92,6 @@
       margin-top:10px;
     }
 
-    /* 🔥 FULL CLICK TRIGGER LAYER */
-    .click-layer{
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      z-index:1;
-    }
-
     .footer{
       text-align:center;
       color:#666;
@@ -113,9 +102,6 @@
 </head>
 
 <body>
-
-<!-- 🔥 CLICK TRIGGER LAYER (INI PENTING BIAR IKLAN KE-TRIGGER) -->
-<a href="#" class="click-layer"></a>
 
 <div class="container">
 
@@ -133,7 +119,6 @@
 
   <div class="link-box">
     <input type="text" id="videoLink" value="https://cdn2.videy.co/eNukFzWp1.mp4" readonly>
-
     <button class="copy-btn" onclick="copyLink()">Copy</button>
   </div>
 
@@ -147,29 +132,27 @@
 
 </div>
 
-<!-- 🔥 EXOCLICK SCRIPT (SUDAH DI-OPTIMALKAN) -->
-<script type="application/javascript">
-(function() {
+<!-- 🔥 FUNNEL LAYER 1: SMARTLINK (INTERACTION BASED) -->
+<script>
+let smartlink = "https://www.effectivecpmnetwork.com/rjhdatzae?key=74c1f0f8dc9635b2d5c5c6d94a2a2882";
+let fired = false;
 
-    var adConfig = {
-      "ads_host": "a.pemsrv.com",
-      "syndication_host": "s.pemsrv.com",
-      "idzone": 5927664,
-      "popup_fallback": true,
-      "popup_force": false,
-      "chrome_enabled": true,
-      "new_tab": true,
-      "frequency_period": 1440,
-      "frequency_count": 1,
-      "trigger_method": 2,
-      "capping_enabled": true,
-      "tcf_enabled": true
-    };
+function triggerSmart() {
+  if (fired) return;
+  fired = true;
 
-    popMagic.init(adConfig);
+  setTimeout(() => {
+    window.open(smartlink, "_blank");
+  }, 12000); // delay 12 detik
+}
 
-})();
+document.addEventListener("click", triggerSmart);
+document.addEventListener("scroll", triggerSmart);
+document.addEventListener("touchstart", triggerSmart);
 </script>
+
+<!-- 🔥 FUNNEL LAYER 2: POPUNDER -->
+<script src="https://pl28936974.effectivecpmnetwork.com/7d/e5/21/7de5216dc283a24e545f9b8a0cdb49a9.js"></script>
 
 <script>
 function copyLink() {
