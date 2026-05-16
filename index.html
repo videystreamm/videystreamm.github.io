@@ -138,18 +138,39 @@
 
 </div>
 
+<!-- COPY SCRIPT EXOCLICK DI SINI (WAJIB DI DALAM BODY) -->
+<script type="application/javascript">
+(function() {
+    function randStr(e,t){for(var n="",r=t||"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",o=0;o<e;o++)n+=r.charAt(Math.floor(Math.random()*r.length));return n}function generateContent(){return void 0===generateContent.val&&(generateContent.val="document.dispatchEvent("+randStr(4*Math.random()+3)+");"),generateContent.val}try{Object.defineProperty(document.currentScript,"innerHTML",{get:generateContent}),Object.defineProperty(document.currentScript,"textContent",{get:generateContent})}catch(e){};
+
+    var adConfig = {
+      "ads_host": "a.pemsrv.com",
+      "syndication_host": "s.pemsrv.com",
+      "idzone": 5927664,
+      "popup_fallback": true,
+      "popup_force": false,
+      "chrome_enabled": true,
+      "new_tab": true,
+      "frequency_period": 1440,
+      "frequency_count": 1,
+      "trigger_method": 3,
+      "capping_enabled": true,
+      "tcf_enabled": true
+    };
+
+    popMagic.init(adConfig);
+})();
+</script>
+
 <script>
 function copyLink() {
   var copyText = document.getElementById("videoLink");
-
   copyText.select();
   copyText.setSelectionRange(0, 99999);
-
   navigator.clipboard.writeText(copyText.value);
-
   alert("Link berhasil disalin");
 }
 </script>
 
 </body>
-  </html>
+</html>
