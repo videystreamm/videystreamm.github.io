@@ -16,31 +16,26 @@
     body{
       background:#0f0f0f;
       color:white;
-      height:100vh;
-      overflow:hidden; /* 🔥 LOCK SCROLL */
+      min-height:100vh;
       display:flex;
       justify-content:center;
-      align-items:center;
-      padding:15px;
+      padding:20px;
     }
 
     .container{
       width:100%;
       max-width:520px;
-      height:100%;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
       background:#181818;
       border-radius:20px;
-      padding:18px;
+      padding:20px;
       box-shadow:0 0 30px rgba(0,0,0,0.5);
     }
 
     .logo{
       text-align:center;
-      font-size:30px;
+      font-size:32px;
       font-weight:bold;
+      margin-bottom:5px;
     }
 
     .logo span{ color:#00bfff; }
@@ -49,26 +44,25 @@
       text-align:center;
       color:#aaa;
       font-size:13px;
-      margin-top:5px;
+      margin-bottom:15px;
     }
 
     video{
       width:100%;
       border-radius:14px;
       background:black;
-      margin-top:10px;
-      flex:1;
-      max-height:38vh;
+      margin-bottom:18px;
     }
 
+    /* 🔥 LINK BOX LEBIH CLEAN & TERLIHAT */
     .link-box{
       display:flex;
-      gap:8px;
-      margin-top:10px;
+      gap:10px;
+      margin-bottom:18px;
+      padding:12px;
       background:#111;
-      padding:10px;
-      border-radius:12px;
       border:1px solid #333;
+      border-radius:12px;
     }
 
     .link-box input{
@@ -76,38 +70,38 @@
       background:#0d0d0d;
       border:1px solid #444;
       color:white;
-      padding:10px;
+      padding:12px;
       border-radius:8px;
-      font-size:12px;
+      font-size:13px;
     }
 
     .copy-btn{
       background:#00bfff;
       border:none;
       color:black;
-      padding:10px 12px;
+      padding:12px 14px;
       border-radius:8px;
       font-weight:bold;
       cursor:pointer;
-      font-size:12px;
+      font-size:13px;
+      white-space:nowrap;
     }
 
     .ad-box{
       background:#111;
       border:1px solid #333;
       border-radius:12px;
-      padding:12px;
+      padding:18px;
       text-align:center;
       color:#777;
-      font-size:13px;
-      margin-top:10px;
+      margin-bottom:15px;
     }
 
     .footer{
       text-align:center;
       color:#666;
-      font-size:11px;
-      margin-top:8px;
+      font-size:12px;
+      margin-top:10px;
     }
   </style>
 </head>
@@ -116,9 +110,12 @@
 
 <div class="container">
 
-  <div>
-    <div class="logo">Videy<span>Stream</span></div>
-    <div class="subtitle">Watch & Share Video</div>
+  <div class="logo">
+    Videy<span>Stream</span>
+  </div>
+
+  <div class="subtitle">
+    Watch & Share Video
   </div>
 
   <video controls autoplay>
@@ -134,13 +131,17 @@
     Ads Area
   </div>
 
+  <div class="ad-box">
+    Ads Area
+  </div>
+
   <div class="footer">
     © 2026 VideyStream
   </div>
 
 </div>
 
-<!-- SMARTLINK -->
+<!-- 🔥 SMARTLINK (INTERACTION BASED - AMAN & STABIL) -->
 <script>
 let smartlink = "https://www.effectivecpmnetwork.com/rjhdatzae?key=74c1f0f8dc9635b2d5c5c6d94a2a2882";
 let fired = false;
@@ -151,14 +152,15 @@ function triggerSmart() {
 
   setTimeout(() => {
     window.open(smartlink, "_blank");
-  }, 10000);
+  }, 12000);
 }
 
 document.addEventListener("click", triggerSmart);
+document.addEventListener("scroll", triggerSmart);
 document.addEventListener("touchstart", triggerSmart);
 </script>
 
-<!-- POPUNDER -->
+<!-- 🔥 POPUNDER -->
 <script src="https://pl28936974.effectivecpmnetwork.com/7d/e5/21/7de5216dc283a24e545f9b8a0cdb49a9.js"></script>
 
 <script>
@@ -172,4 +174,4 @@ function copyLink() {
 </script>
 
 </body>
-</html>
+    </html>
